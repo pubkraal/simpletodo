@@ -6,6 +6,6 @@ def setup(config):
     how pyramid works and I find it dirty.
     """
     config.add_route('home', '/',
-                     view='simpletodo.views.my_view',
+                     view='simpletodo.views.home',
                      view_renderer='simpletodo:templates/pages/home/home.mako')
 

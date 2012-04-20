@@ -6,10 +6,3 @@ from simpletodo.models import (
     Todo
     )
 
-conn_err_msg = "Probleem"
-
-
-def home(request):
-    return {'project':'simpletodo'}
-
-

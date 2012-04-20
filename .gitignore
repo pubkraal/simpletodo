@@ -1,4 +1,4 @@
 *pyc
 *.db
 *egg-info
-
+.*.swp
