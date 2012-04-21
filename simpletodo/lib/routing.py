@@ -8,4 +8,6 @@ def setup(config):
     config.add_route('home', '/',
                      view='simpletodo.views.home',
                      view_renderer='simpletodo:templates/pages/home/home.mako')
-
+    config.add_route('todos', '/todos/list',
+                     view='simpletodo.views.todo.list',
+                     view_renderer='json')

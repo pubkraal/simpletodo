@@ -23,10 +23,17 @@ class Todo(Base):
     __tablename__ = 'todo'
     id = Column(Integer, primary_key=True)
     due = Column(DateTime, index=True)
-    done = Column(Boolean, index=True)
+    done = Column(Boolean, index=True, default=False)
     text = Column(String(200), index=True)
 
     def __init__(self, due, text):
-        if istanceof(due, datetime.datetime):
+        if isinstance(due, datetime.datetime):
             self.due = due
             self.text = text
+            self.done = False
+
+    def get_dict(self):
+        return {'due': self.due.strftime("%Y-%m-%d"),
+                'done': self.done,
+                'text': self.text,
+                'id': int(self.id)}

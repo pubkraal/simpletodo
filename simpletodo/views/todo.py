@@ -6,3 +6,7 @@ from simpletodo.models import (
     Todo
     )
 
+
+def list(request):
+    todos = DBSession.query(Todo).filter(Todo.done!=True)
+    return {'todos': [t.get_dict() for t in todos]}
