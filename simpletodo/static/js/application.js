@@ -25,16 +25,14 @@ function refresh_todolist() {
 }
 
 function update_todo_listing(data) {
-    $('.mylog ul').empty();
-    for (var todo in data.todos) {
-        li = $('<li></li>');
-        name = $('<span>'+data.todos[todo].text+'</span>').addClass("todo-text");
-        due = $('<span>'+data.todos[todo].due+'</span>').addClass("todo-due");
+    $('.todo-listing').empty();
+    for (var todoidx in data.todos) {
+        var todo = data.todos[todoidx];
+        var todo_id = 'todo-' + todo.id;
 
-        name.appendTo(li);
-        due.appendTo(due);
-
-        li.appendTo('.todo-listing');
+        $('<li></li>').attr('class', todo_id).appendTo('.todo-listing');
+        $('<span>'+ todo.text +'</span>').addClass("todo-text").appendTo('.'+todo_id);
+        $('<span>'+ todo.due +'</span>').addClass("todo-due").appendTo('.'+todo_id);
     }
 }
 
