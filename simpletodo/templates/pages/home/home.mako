@@ -6,7 +6,7 @@
 + Todo toevoegen
 </div>
 
-<div class="todo listing">
+<div class="todo-listing">
     <ul>
     </ul>
 </div>

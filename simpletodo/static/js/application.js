@@ -27,7 +27,14 @@ function refresh_todolist() {
 function update_todo_listing(data) {
     $('.mylog ul').empty();
     for (var todo in data.todos) {
-        $("<li>"+data.todos[todo].text+"</li>").appendTo('.mylog ul');
+        li = $('<li></li>');
+        name = $('<span>'+data.todos[todo].text+'</span>').addClass("todo-text");
+        due = $('<span>'+data.todos[todo].due+'</span>').addClass("todo-due");
+
+        name.appendTo(li);
+        due.appendTo(due);
+
+        li.appendTo('.todo-listing');
     }
 }
 
