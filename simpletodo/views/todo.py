@@ -14,3 +14,10 @@ def list(request):
 
 def store(request):
     return {'status': 'ok'}
+
+
+def close(request):
+    todo = DBSession.query(Todo).get(request.POST.get('id'))
+    if todo:
+        todo.done = True
+
