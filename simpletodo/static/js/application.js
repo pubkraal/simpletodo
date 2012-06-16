@@ -12,6 +12,7 @@ function refresh_todolist() {
         return;
     }
     updating = true;
+    console.log("Loading...");
     show_loading_indicator();
     $.ajax({
         url: '/todos/list',
@@ -35,7 +36,7 @@ function create_todo(todo) {
     var todo_id = 'todo-' + todo.id;
 
     $('<li></li>').attr('class', todo_id).appendTo('.todo-listing');
-    $('<span><input type="checkbox" onmouseup="return todo_chg(this);"></span>').appendTo('.'+todo_id);
+    $('<span><input type="checkbox" onchange="return todo_chg(this);"></span>').appendTo('.'+todo_id);
     $('<span>'+ todo.text +'</span>').addClass("todo-text").appendTo('.'+todo_id);
     $('<span>'+ todo.due +'</span>').addClass("todo-due").appendTo('.'+todo_id);
 }
@@ -58,7 +59,7 @@ function todo_chg(element) {
 
     var todo_id = parseInt(classes[1]);
 
-    if ($(element).attr('checked') == 'checked') {
+    if ($(element).is(':checked')) {
         todo_close(todo_id);
     }
     else {

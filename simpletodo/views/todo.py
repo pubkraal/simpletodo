@@ -18,6 +18,8 @@ def store(request):
 
 def close(request):
     todo = DBSession.query(Todo).get(request.POST.get('id'))
+    print "Closing", todo
     if todo:
         todo.done = True
 
+    DBSession.commit()

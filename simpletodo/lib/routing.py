@@ -14,3 +14,6 @@ def setup(config):
     config.add_route('todo-store', '/todos/store',
                      view='simpletodo.views.todo.store',
                      view_renderer='json')
+    config.add_route('todo-close', '/todo/close',
+                     view='simpletodo.views.todo.close',
+                     view_renderer='json')
