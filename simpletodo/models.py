@@ -34,6 +34,19 @@ class Todo(Base):
 
     def get_dict(self):
         return {'due': self.due.strftime("%Y-%m-%d"),
+                'duetext': self.get_due_text(),
+                'status': self.get_todo_status(),
                 'done': self.done,
                 'text': self.text,
                 'id': int(self.id)}
+
+    def get_due_text(self):
+        return self.due.strftime("%e %b %Y").strip()
+
+    def get_todo_status(self):
+        if self.due.date() < datetime.date.today():
+            return 'important'
+        elif self.due.date() == datetime.date.today():
+            return 'warning'
+        else:
+            return ''

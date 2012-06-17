@@ -14,7 +14,6 @@ def list(request):
 
 
 def store(request):
-    # Verify stuff
     try:
         due = datetime.datetime.strptime(request.POST.get('due', ''), "%d-%m-%Y")
         if not due.date() >= datetime.date.today():

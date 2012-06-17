@@ -23,12 +23,7 @@
     </div>
 </div>
 
-<div class="todo-listing">
-    <ul>
-    </ul>
-</div>
-
-<div class="mylog">
+<div id="todo-listing">
     <ul>
     </ul>
 </div>

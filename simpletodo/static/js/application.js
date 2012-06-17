@@ -26,7 +26,7 @@ function refresh_todolist() {
 }
 
 function update_todo_listing(data) {
-    $('.todo-listing').empty();
+    $('#todo-listing ul').empty();
     for (var todoidx in data.todos) {
         create_todo(data.todos[todoidx]);
     }
@@ -35,10 +35,14 @@ function update_todo_listing(data) {
 function create_todo(todo) {
     var todo_id = 'todo-' + todo.id;
 
-    $('<li></li>').attr('class', todo_id).appendTo('.todo-listing');
+    $('<li></li>').attr('class', todo_id).appendTo('#todo-listing ul');
     $('<span><input type="checkbox" onchange="return todo_chg(this);"></span>').appendTo('.'+todo_id);
     $('<span>'+ todo.text +'</span>').addClass("todo-text").appendTo('.'+todo_id);
-    $('<span>'+ todo.due +'</span>').addClass("todo-due").appendTo('.'+todo_id);
+    date = $('<span>'+ todo.duetext +'</span>').addClass("todo-due").addClass('label')
+    if (todo.status != '') {
+        date.addClass('label-' + todo.status);
+    }
+    date.appendTo('.'+todo_id);
 }
 
 function show_loading_indicator() {

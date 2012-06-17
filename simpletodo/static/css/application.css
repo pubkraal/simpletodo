@@ -1,17 +1,8 @@
-#indicator {
-    position: absolute;
-    right: 0px;
-}
-
-#add-todo-form,
-.todo-mut-link {
-    display: none;
-}
-#add-todo-form.shown,
-.todo-mut-link.shown {
-    display: block;
-}
-
-#form-error {
-    display: none;
-}
+#indicator { position: absolute; right: 0px; }
+#add-todo-form, .todo-mut-link { display: none; }
+#add-todo-form.shown, .todo-mut-link.shown { display: block; }
+#form-error { display: none; }
+.todo-text, .todo-due { margin-left: 1em; }
+#todo-listing { margin-top: 2em; }
+#todo-listing ul { margin-left: 0px; }
+#todo-listing ul li { list-style-type: none; }
