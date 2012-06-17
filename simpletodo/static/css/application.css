@@ -2,3 +2,16 @@
     position: absolute;
     right: 0px;
 }
+
+#add-todo-form,
+.todo-mut-link {
+    display: none;
+}
+#add-todo-form.shown,
+.todo-mut-link.shown {
+    display: block;
+}
+
+#form-error {
+    display: none;
+}

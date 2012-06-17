@@ -68,13 +68,51 @@ function todo_chg(element) {
 }
 
 function todo_close(id) {
+    var csrf_token = window.csrf_token;
     $.ajax({
         url: '/todo/close',
-        data: {id: id},
-        method: 'post',
+        data: {id: id, csrf: csrf_token},
+        type: 'POST',
         dataType: 'json',
         success: function (data) {
+            console.info("Done updating")
             updating = false;
+            refresh_todolist();
         }
     });
+}
+
+function toggle_add_form() {
+    $('#add-todo-form').toggleClass('shown');
+    $('.todo-mut-link').toggleClass('shown');
+}
+
+function ajax_submit_form(form, clear) {
+    updating = true;
+    show_loading_indicator();
+    $('#form-error').hide();
+
+    $.ajax({
+        url: $(form).attr('action'),
+        data: $(form).serialize(),
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            if (data.status == 'ok' && clear) {
+                clear_form(form);
+            } else if (data.status == 'error') {
+                $('#form-error span').text('Kies een degelijke datum of zo. Eén in de toekomst bijvoorbeeld');
+                $('#form-error').show();
+            }
+
+            hide_loading_indicator();
+            updating = false;
+            refresh_todolist();
+        }
+    });
+    return false;
+}
+
+function clear_form(form) {
+    $(form).children('input[type=text]').attr('value', '');
 }

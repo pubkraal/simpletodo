@@ -10,6 +10,6 @@ conn_err_msg = "Probleem"
 
 
 def home(request):
-    return {'project':'simpletodo'}
+    return {'project':'simpletodo', 'session': request.session}
 
 
