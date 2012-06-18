@@ -1,4 +1,5 @@
 from pyramid import request
+from pyramid import exceptions
 
 from simpletodo.lib import security
 
@@ -12,4 +13,4 @@ def before_request(event):
     if event.request.method.strip() == 'POST':
         POST = event.request.POST
         if POST.get('csrf', '') != session.get('csrf'):
-            raise Exception('No CSRF token present or invalid')
+            raise exceptions.Forbidden('No CSRF token present or invalid')
