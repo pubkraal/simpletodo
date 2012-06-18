@@ -103,7 +103,7 @@ function ajax_submit_form(form, clear) {
         dataType: 'json',
         success: function (data) {
             if (data.status == 'ok' && clear) {
-                clear_form(form);
+                $('input[name=text]').attr('value', '').focus();
             } else if (data.status == 'error') {
                 $('#form-error span').text('Kies een degelijke datum of zo. Eén in de toekomst bijvoorbeeld');
                 $('#form-error').show();
@@ -115,8 +115,4 @@ function ajax_submit_form(form, clear) {
         }
     });
     return false;
-}
-
-function clear_form(form) {
-    $(form).children('input[type=text]').attr('value', '');
 }
